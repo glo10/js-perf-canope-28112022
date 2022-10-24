@@ -1,0 +1,7 @@
+{
+  "base": "http://localhost",
+  "port": 5500,
+  "routes": {
+    "home": "3-exercices/0-front/templates/html"
+  }
+}

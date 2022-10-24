@@ -1,0 +1,40 @@
+{
+  "name": "orsys-28112022-js-perf-back-end",
+  "version": "1.0.0",
+  "description": "Node back-end",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "standard --fix",
+    "dev": "concurrently -kn \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"node --watch 9-node/dist/ex3.js\"",
+    "start": "tsc && node 9-node/dist/ex3.js 8888",
+    "tsc-clean": "rm -r 9-node/dist && tsc",
+    "tsc": "tsc",
+    "autocannon": "autocannon --debug -c 100 -d 5 localhost:8888",
+    "doctor": "rm -r '.clinic' && clinic doctor --autocannon [/] -- node 9-node/dist/ex3.js",
+    "flame": "clinic flame -- node 9-node/dist/ex3.js",
+    "bubbleprof": "clinic bubbleprof -- node 9-node/dist/ex3.js"
+  },
+  "keywords": [
+    "node",
+    "typescript"
+  ],
+  "author": "glodie tshimini",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/sqlite3": "^3.1.8",
+    "autocannon": "^7.10.0",
+    "clinic": "^12.0.0",
+    "concurrently": "^7.5.0",
+    "nodemon": "^2.0.20",
+    "standard": "^17.0.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "sqlite3": "^5.1.2"
+  }
+}
