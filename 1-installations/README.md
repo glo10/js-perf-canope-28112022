@@ -37,7 +37,7 @@ Installations ci-dessous à faire uniquement si vous n'avez pas ces outils en lo
 
 ## Node JS et NPM
 
-- [Page téléchargement NodeJs prendre la version 16.18.0 LTS](https://nodejs.org/en/)
+- [Page téléchargement NodeJs prendre la version 18.12.1 LTS ou 19.1.0](https://nodejs.org/en/)
 
 ---
 
