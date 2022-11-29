@@ -66,12 +66,10 @@ class FormSignIn extends HTMLElement {
     this._submitEl.addEventListener('click', (e) => {
       e.preventDefault()
       const alertUser = this.querySelector('.alert.alert-danger')
-      let isEmpty = false
       const size = this._inputs.length
       for (let i = 0; i < size; i++) {
         const input = this._inputs[i]
         if (input.el.value === '') {
-          isEmpty = true
           if (!alertUser) {
             const p = document.createElement('p')
             p.classList.add('alert', 'alert-danger', 'my-3')
@@ -81,7 +79,7 @@ class FormSignIn extends HTMLElement {
           return
         }
       }
-      if (!isEmpty && alertUser) {
+      if (alertUser) {
         alertUser.remove()
       }
     })
