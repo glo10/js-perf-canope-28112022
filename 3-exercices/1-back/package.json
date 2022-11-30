@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "jest",
-    "lint": "standard --fix",
+    "std-fix": "standard --fix",
+    "std": "standard",
     "dev": "concurrently -kn \"Typescript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"node --watch 9-node/dist/ex3.js\"",
     "start": "tsc && node 9-node/dist/ex3.js 8888",
     "tsc-clean": "rm -r 9-node/dist && tsc",
