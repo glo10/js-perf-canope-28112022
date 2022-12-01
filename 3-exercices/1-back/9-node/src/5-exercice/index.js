@@ -31,6 +31,10 @@ http.on('app_404', (response) => {
   response.end('{"message": "404 not found"}')
 })
 
+http.on('app_response', (codeStatus, data, response) => {
+  response.writeHead(codeStatus, headers)
+  response.end(data) // response.write(data) response.end()
+})
 http.on('app_user_data', (newUser, response) => {
   newUser = JSON.parse(newUser)
   const dir = resolve('9-node', 'data')
@@ -50,8 +54,7 @@ http.on('app_user_data', (newUser, response) => {
         const users = JSON.parse(res)
         let isUserExist = users.find(user => newUser.email === user.email) ? true : false
         if (isUserExist) {
-          response.writeHead(200, headers)
-          response.end(JSON.stringify({ message: 'user already exists' }))
+          http.emit('app_response', 200, JSON.stringify({ message: 'user already exists' }), response)
         } else {
           users.push(newUser)
           return createFileWithContent(filename, JSON.stringify(users))
@@ -59,8 +62,7 @@ http.on('app_user_data', (newUser, response) => {
       })
       .then((created) => {
         if(created) {
-          response.writeHead(201, headers)
-          response.end('{"message": "user created"}')
+          http.emit('app_response', 201, JSON.stringify({ message: 'user created' }), response )
         }
       })
       .catch((err) => {
